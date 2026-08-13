@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #F7F4ED;
+  --color-foreground: #1E2924;
+  --color-primary: #234D3C;
+  --color-primary-foreground: #F7F4ED;
+  --color-secondary: #DCE6DE;
+  --color-secondary-foreground: #234D3C;
+  --color-muted: #E8CFC4;
+  --color-muted-foreground: #1E2924;
+  --color-accent: #B96F52;
+  --color-accent-foreground: #F7F4ED;
+  --color-olive: #6F7B45;
+  --color-border: rgba(35, 77, 60, 0.15);
+
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .section-screen {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: clamp(4.5rem, 8vw, 7rem) clamp(1.25rem, 4vw, 3rem);
+  }
+ @font-face {
+  font-family: "Salty Ages";
+  src: url("/fonts/SaltyAges.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-salty {
+  font-family: "Salty Ages", serif;
+}
+  .section-screen--top {
+    padding-top: clamp(6rem, 8vw, 6.5rem);
+  }
+
+  .hero-landing {
+    padding-top: clamp(5rem, 6vw, 6rem);
+  }
+
+  .hero-landing__shell {
+    transform: translateY(0.9rem);
+  }
+
+  .section-shell {
+    width: 100%;
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  .image-frame {
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .soft-shadow {
+    box-shadow: 0 24px 80px rgba(30, 41, 36, 0.1);
+  }
+
+  @media (max-width: 767px) {
+    .section-screen {
+      align-items: flex-start;
+      padding-block: 5.5rem 4rem;
+    }
+
+    .section-screen--top {
+      padding-top: 6.25rem;
+    }
+
+    .hero-landing__shell {
+      transform: translateY(0.5rem);
+    }
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out forwards;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(35, 77, 60, 0.2) transparent;
+}
