@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react"
-import { ShoppingBag, Search, User, Heart, Menu, X } from "lucide-react"
-import { useApp } from "../context/AppContext"
-import type { Page } from "../types"
+import { useState, useEffect } from "react";
+import { ShoppingBag, Search, User, Heart, Menu, X } from "lucide-react";
+import { useApp } from "../context/AppContext";
+import type { Page } from "../types";
+import verdeLogo from "../assets/verde-logo.png";
 
-const navLinks: { label: string page: Page }[] = [
+const navLinks: { label: string; page: Page }[] = [
   { label: "Plants", page: "plants" },
   { label: "Flowers", page: "flowers" },
   { label: "Collections", page: "collections" },
-]
+];
 
 export default function Navbar() {
   const {
@@ -21,34 +22,34 @@ export default function Navbar() {
     setIsAuthOpen,
     setAuthMode,
     user,
-  } = useApp()
+  } = useApp();
 
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNav = (page: Page) => {
-    setCurrentPage(page)
-    setIsMobileOpen(false)
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    setCurrentPage(page);
+    setIsMobileOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleUserClick = () => {
     if (user) {
-      setCurrentPage("home")
+      setCurrentPage("home");
     } else {
-      setAuthMode("login")
-      setIsAuthOpen(true)
+      setAuthMode("login");
+      setIsAuthOpen(true);
     }
-  }
+  };
 
-  const isHome = currentPage === "home"
-  const transparent = isHome && !isScrolled && !isMobileOpen
+  const isHome = currentPage === "home";
+  const transparent = isHome && !isScrolled && !isMobileOpen;
 
   return (
     <>
@@ -73,11 +74,7 @@ export default function Navbar() {
               className="flex items-center justify-center self-center"
               aria-label="Go to home"
             >
-              <img
-                src="/src/assests/logo.png"
-                alt="Verde logo"
-                className="h-9 w-auto max-w-[140px] object-contain md:h-12 lg:h-14"
-              />
+              <img src={verdeLogo} alt="Verde logo" />
             </button>
           </div>
 
@@ -186,8 +183,8 @@ export default function Navbar() {
           <div className="border-t border-border pt-8 flex flex-col gap-6">
             <button
               onClick={() => {
-                setIsSearchOpen(true)
-                setIsMobileOpen(false)
+                setIsSearchOpen(true);
+                setIsMobileOpen(false);
               }}
               className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors"
             >
@@ -196,8 +193,8 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => {
-                handleUserClick()
-                setIsMobileOpen(false)
+                handleUserClick();
+                setIsMobileOpen(false);
               }}
               className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors"
             >
@@ -219,5 +216,5 @@ export default function Navbar() {
         </div>
       </div>
     </>
-  )
+  );
 }
