@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ShoppingBag, Search, User, Heart, Menu, X } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import type { Page } from "../types";
-import verdeLogo from "../assets/verde-logo.png";
+import verdeLogo from "../assets/logo.png";
 
 const navLinks: { label: string; page: Page }[] = [
   { label: "Plants", page: "plants" },
