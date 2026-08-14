@@ -70,9 +70,14 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => handleNav("home")}
-              className="font-serif text-2xl font-semibold tracking-wide text-primary"
+              className="flex items-center justify-center self-center"
+              aria-label="Go to home"
             >
-              VERDE
+              <img
+                src="/src/assests/logo.png"
+                alt="Verde logo"
+                className="h-9 w-auto max-w-[140px] object-contain md:h-12 lg:h-14"
+              />
             </button>
           </div>
 
