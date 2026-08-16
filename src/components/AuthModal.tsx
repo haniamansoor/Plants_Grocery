@@ -34,6 +34,16 @@ export default function AuthModal() {
   }, [isAuthOpen, authMode])
 
   useEffect(() => {
+    if (!isAuthOpen) return
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = originalOverflow
+    }
+  }, [isAuthOpen])
+
+  useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsAuthOpen(false)
     }
@@ -129,7 +139,7 @@ export default function AuthModal() {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 ${
+      className={`fixed inset-0 z-50 flex items-start justify-center overflow-y-auto overscroll-contain p-4 py-6 transition-all duration-300 sm:items-center sm:py-8 ${
         isAuthOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
@@ -141,7 +151,7 @@ export default function AuthModal() {
       />
 
       <div
-        className={`relative bg-background w-full max-w-md shadow-2xl transition-all duration-300 ${
+        className={`relative max-h-[calc(100svh-2rem)] w-full max-w-md overflow-y-auto bg-background shadow-2xl transition-all duration-300 sm:max-h-[calc(100svh-4rem)] ${
           isAuthOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
         }`}
       >
