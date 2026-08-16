@@ -13,7 +13,7 @@ import { useApp } from "../context/AppContext"
 import type { Page } from "../types"
 import verdeLogo from "../assests/logo.png"
 
-const navLinks: { label: string page: Page }[] = [
+const navLinks: { label: string; page: Page }[] = [
   { label: "Plants", page: "plants" },
   { label: "Flowers", page: "flowers" },
   { label: "Collections", page: "collections" },
